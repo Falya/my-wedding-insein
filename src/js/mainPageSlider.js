@@ -38,9 +38,9 @@ showSlides(slideIndex);
 		showSlides(slideIndex = n);
 	}
 
-	// let autoSlide = setInterval(() => {
-	// 	plusSlide(1);
-	// }, 3000);
+	let autoSlide = setInterval(() => {
+		plusSlide(1);
+	}, 3000);
 
 	sliderDots.addEventListener('click', (e) => {
 		let target = e.target;
