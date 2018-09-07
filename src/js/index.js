@@ -1,4 +1,5 @@
 import mainPageSlider from './mainPageSlider.js';
+import mainPageOverlay from './mainPageOverlay.js';
 import mainPageModal from './mainPageModal.js';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	
 	mainPageSlider();
-	mainPageModal();
+	mainPageOverlay();
+	// mainPageModal();
 
 });
