@@ -1,4 +1,5 @@
-import mainPageSlider from './mainPageSlider.js'
+import mainPageSlider from './mainPageSlider.js';
+import mainPageModal from './mainPageModal.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 	let loader = document.querySelector('.loader-div');
@@ -7,7 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		loader.style.display = 'none';
 		document.body.style.overflow = 'visible';
 	}
-	console.log("('opacity')", loader.style.opacity);
+	
 	mainPageSlider();
+	mainPageModal();
 
 });
