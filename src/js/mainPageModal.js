@@ -1,5 +1,5 @@
 export default function mainPageModal() {
-	
+
     let headerButton = document.getElementsByClassName('header-login__button')[0],
         footerButton = document.getElementsByClassName('footer-login__button')[0],
         overlay = document.querySelector('.overlay'),
@@ -18,6 +18,18 @@ export default function mainPageModal() {
 
     }
 
+    function hideModal() {
+        modal.classList.remove('animated', 'flipInX');
+        modal.classList.add('animated', 'flipOutX');
+        overlay.classList.remove('animated', 'fadeIn');
+        overlay.classList.add('animated', 'fadeOut');
+        setTimeout(() => {
+            overlay.style.display = '';
+            overlay.classList.remove('animated', 'fadeOut');
+            modal.classList.remove('animated', 'flipOutX');
+        }, 1000)
+    }
+
     function resizing() {
         let browserWidth = document.documentElement.clientWidth,
             modalWidth = modal.offsetWidth,
@@ -33,17 +45,12 @@ export default function mainPageModal() {
         showModal();
     });
 
-    close.addEventListener('click', () => {
-        modal.classList.remove('animated', 'flipInX');
-        modal.classList.add('animated', 'flipOutX');
-        overlay.classList.remove('animated', 'fadeIn');
-        overlay.classList.add('animated', 'fadeOut');
-        setTimeout(() => {
-            overlay.style.display = '';
-            overlay.classList.remove('animated', 'fadeOut');
-            modal.classList.remove('animated', 'flipOutX');
-        }, 1000)
-
+    close.addEventListener('click', hideModal);
+    overlay.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target.classList.contains('overlay')) {
+            hideModal();
+        }
     });
 
     window.addEventListener('resize', resizing);
