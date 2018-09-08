@@ -1,11 +1,14 @@
 .loader-div {
   height: 100%;
-  width: 100%;
-  background: #fa7a95;
-  display: block;
-  position: absolute;
-  overflow: hidden;
-  z-index: 120;
+    width: 100%;
+    background: #fa7a95;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 120;
 }
 .preloader {
   position: absolute;

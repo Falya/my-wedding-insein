@@ -10,7 +10,7 @@ export default function mainPageModal() {
     input[1].addEventListener("focus", mask, false);
     input[1].addEventListener("blur", mask, false);
     input[1].addEventListener("keydown", mask, false);
-   
+
     //Проверка на русские символы
     function checkRu(e) {
         let evt = e || window.event;
@@ -73,17 +73,17 @@ export default function mainPageModal() {
     message.failure = 'Что-то пошло не так... 404';
 
     function formSubmit(formName) {
-       
-             close = document.querySelector('.popup-close');
 
-            
+        close = document.querySelector('.popup-close');
+
+
 
         formName.addEventListener('submit', (e) => {
             e.preventDefault();
-             let statusMessage = document.createElement('div'),
-            divCircle = document.createElement('div'),
-            divComplete = document.createElement('div');
-statusMessage.classList.add('status', 'animated');
+            let statusMessage = document.createElement('div'),
+                divCircle = document.createElement('div'),
+                divComplete = document.createElement('div');
+            statusMessage.classList.add('status', 'animated');
             formName.parentNode.appendChild(statusMessage);
             statusMessage.style.width = form.clientWidth + 'px';
 
@@ -102,11 +102,11 @@ statusMessage.classList.add('status', 'animated');
                     request.onreadystatechange = () => {
 
                         if (request.readyState < 4) {
-	                            statusMessage.style.display = 'block';
-					                    statusMessage.classList.add('fadeIn');
-					                    form.classList.add('blur');
-					                    statusMessage.appendChild(divCircle);
-					                    divCircle.classList.add('circle-loader');
+                            statusMessage.style.display = 'block';
+                            statusMessage.classList.add('fadeIn');
+                            form.classList.add('blur');
+                            statusMessage.appendChild(divCircle);
+                            divCircle.classList.add('circle-loader');
                             console.log('loading');
                         } else if (request.readyState === 4) {
                             if (request.status == 200 && request.status < 300) {
@@ -129,15 +129,15 @@ statusMessage.classList.add('status', 'animated');
             }
 
             postData(formData)
-                
+
                 .then(() => {
-                	divCircle.appendChild(divComplete);
+                    divCircle.appendChild(divComplete);
                     divCircle.classList.add('load-complete');
                     divComplete.classList.add('draw', 'checkmark');
                     setTimeout(() => {
-                    	statusMessage.classList.remove('fadeIn');
+                        statusMessage.classList.remove('fadeIn');
                         statusMessage.classList.add('fadeOut');
-                        
+
                         divCircle.classList.remove('load-complete');
                         divComplete.classList.remove('draw', 'checkmark');
                         setTimeout(() => {
@@ -149,7 +149,7 @@ statusMessage.classList.add('status', 'animated');
                     }, 2000);
                 })
                 .catch(() => {
-                	statusMessage.style.display = 'block';
+                    statusMessage.style.display = 'block';
                     statusMessage.classList.add('fadeIn');
                     // statusMessage.cssText = '';
                     statusMessage.innerHTML = message.failure;
@@ -166,6 +166,3 @@ statusMessage.classList.add('status', 'animated');
     }
 
 }
-
- 
-  
