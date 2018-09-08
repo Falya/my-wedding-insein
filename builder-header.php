@@ -15,11 +15,17 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- Custom -->
+
+    <link rel="stylesheet" href="css/styleLoader.css">
     
    </head>
     
   <body>
-    
+    <div class="loader-div">
+      <div class="preloader">
+        <i class="fa fa-heart-o"></i>
+      </div>
+    </div>
     <div class="basic">
       <header class="header-main" id="header-builder">
         
