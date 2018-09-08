@@ -12,6 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	
 	mainPageSlider();
 	mainPageOverlay();
-	// mainPageModal();
+	mainPageModal();
 
 });

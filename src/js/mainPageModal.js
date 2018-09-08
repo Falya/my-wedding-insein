@@ -3,25 +3,14 @@ export default function mainPageModal() {
         input = form.getElementsByTagName('input'),
         regBtn = form.querySelector('.popup-form__btn');
 
-    document.querySelector('.overlay').style.display = 'block';
-
-    // input[2].readOnly = true;
-    //   input[2].value = input[1].value;
-    //   input[1].style.opacity = '0';
-    //   input[2].style.marginTop = `${- input[1].offsetHeight}px`;
-    //   input[2].style.width = input[1].clientWidth;
-
-
     input[0].onkeypress = checkRu;
+    input[1].setAttribute('pattern', "\\+375 \\([0-9]{2}\\) [0-9]{3}-[0-9]{2}-[0-9]{2}");
 
     input[1].addEventListener("input", mask, false);
     input[1].addEventListener("focus", mask, false);
     input[1].addEventListener("blur", mask, false);
     input[1].addEventListener("keydown", mask, false);
-    // input[2].addEventListener('click', () => {
-    //     input[1].focus();
-    // });
-
+   
     //Проверка на русские символы
     function checkRu(e) {
         let evt = e || window.event;
@@ -69,7 +58,7 @@ export default function mainPageModal() {
 
         if (event.type == "blur") {
             if (this.value.length == 4)
-                this.value = "+375 (__) ___-__-__";
+                this.value = "";
             // input[2].value = this.value;
         } else {
             setCursorPosition((this.value.length), this, event);
@@ -81,18 +70,27 @@ export default function mainPageModal() {
     // Ajax
     formSubmit(form);
     let message = new Object();
-    message.failure = 'xnj-то пошло не так...';
+    message.failure = 'Что-то пошло не так... 404';
 
     function formSubmit(formName) {
-        let statusMessage = document.createElement('div'),
-            divCircle = document.createElement('div'),
-            divComplite = document.createElement('div');
+       
+             close = document.querySelector('.popup-close');
+
+            
 
         formName.addEventListener('submit', (e) => {
             e.preventDefault();
-            formName.appendChild(statusMessage);
+             let statusMessage = document.createElement('div'),
+            divCircle = document.createElement('div'),
+            divComplete = document.createElement('div');
+statusMessage.classList.add('status', 'animated');
+            formName.parentNode.appendChild(statusMessage);
+            statusMessage.style.width = form.clientWidth + 'px';
 
             let formData = new FormData(formName);
+            formData.append('name', input[0].value);
+            formData.append('phone', input[1].value);
+            formData.append('email', input[2].value);
 
             function postData(data) {
                 return new Promise((resolve, reject) => {
@@ -104,7 +102,11 @@ export default function mainPageModal() {
                     request.onreadystatechange = () => {
 
                         if (request.readyState < 4) {
-                            resolve();
+	                            statusMessage.style.display = 'block';
+					                    statusMessage.classList.add('fadeIn');
+					                    form.classList.add('blur');
+					                    statusMessage.appendChild(divCircle);
+					                    divCircle.classList.add('circle-loader');
                             console.log('loading');
                         } else if (request.readyState === 4) {
                             if (request.status == 200 && request.status < 300) {
@@ -119,6 +121,7 @@ export default function mainPageModal() {
                     request.send(formData);
                 });
             }
+
             function clearInput() {
                 for (let i = 0; i < input.length; i++) {
                     input[i].value = '';
@@ -126,33 +129,43 @@ export default function mainPageModal() {
             }
 
             postData(formData)
+                
                 .then(() => {
-                    statusMessage.style.display = 'block';
-                    statusMessage.appendChild(divCircle);
-                    divCircle.appendChild(divComplete);
-                    divCircle.classList.add('circle-loader');
-                })
-                .then(() => {
+                	divCircle.appendChild(divComplete);
                     divCircle.classList.add('load-complete');
                     divComplete.classList.add('draw', 'checkmark');
                     setTimeout(() => {
+                    	statusMessage.classList.remove('fadeIn');
                         statusMessage.classList.add('fadeOut');
-                        statusMessage.classList.remove('fade');
+                        
                         divCircle.classList.remove('load-complete');
                         divComplete.classList.remove('draw', 'checkmark');
                         setTimeout(() => {
                             statusMessage.style.display = 'none';
                             statusMessage.classList.remove('fadeOut');
-                        }, 1500);
+                            form.classList.remove('blur');
+                            close.click();
+                        }, 500);
                     }, 2000);
                 })
                 .catch(() => {
-                    statusMessage.classList.remove('fade');
-                    statusMessage.cssText = '';
+                	statusMessage.style.display = 'block';
+                    statusMessage.classList.add('fadeIn');
+                    // statusMessage.cssText = '';
                     statusMessage.innerHTML = message.failure;
+                    setTimeout(() => {
+                        statusMessage.classList.add('fadeOut');
+                        statusMessage.style.display = 'none';
+                        statusMessage.classList.remove('fadeOut');
+                        form.classList.remove('blur');
+                    }, 2000);
+
                 })
                 .then(clearInput);
         });
     }
 
 }
+
+ 
+  

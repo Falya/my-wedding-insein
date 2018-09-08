@@ -362,7 +362,7 @@ input:focus, button:focus, .form-box-text__massege:focus, .slick-slide:focus, .s
   position: relative;
   padding-top: 75px;
   padding-bottom: 58px;
-  max-width: 1920px;
+  /*max-width: 1920px;*/
   width: 100%;
   max-height: 900px;
   height: 100%;
@@ -377,6 +377,7 @@ input:focus, button:focus, .form-box-text__massege:focus, .slick-slide:focus, .s
     padding-bottom: 35px;
     background: #2f2f2f url(../img/header/main-bg.jpg) no-repeat center;
     background-size: cover;
+
   }
   .header::before {
     content: "";
@@ -4277,4 +4278,167 @@ svg:active {
   display: block;
   -webkit-transition: background-color 0.6s ease;
   transition: background-color 0.6s ease;
+}
+
+.circle-loader {
+  margin-bottom: 3.5em;
+  margin-top: 0.9em;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #fa7a95;
+  -webkit-animation: loader-spin 1s infinite linear;
+          animation: loader-spin 1s infinite linear;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 50%;
+  width: 7em;
+  height: 7em;
+}
+.load-complete {
+  -webkit-animation: none;
+  animation: none;
+  border-color: #fb93a9;
+  -webkit-transition: border 500ms ease-out;
+  transition: border 500ms ease-out;
+}
+.checkmark.draw:after {
+  -webkit-animation-duration: 800ms;
+          animation-duration: 800ms;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-name: checkmark;
+          animation-name: checkmark;
+  -webkit-transform: scaleX(-1) rotate(135deg);
+          transform: scaleX(-1) rotate(135deg);
+}
+.checkmark:after {
+  opacity: 1;
+  height: 3.5em;
+  width: 1.75em;
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  border-right: 3px solid #fa7a95;
+  border-top: 3px solid #fa7a95;
+  content: '';
+  left: 1.7em;
+  top: 3.5em;
+  position: absolute;
+}
+@-webkit-keyframes loader-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes loader-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 1.75em;
+    opacity: 1;
+  }
+  40% {
+    height: 2.5em;
+    width: 1.75em;
+    opacity: 1;
+  }
+  100% {
+    height: 3.5em;
+    width: 1.75em;
+    opacity: 1;
+  }
+}
+@keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 1.75em;
+    opacity: 1;
+  }
+  40% {
+    height: 2.5em;
+    width: 1.75em;
+    opacity: 1;
+  }
+  100% {
+    height: 3.5em;
+    width: 1.75em;
+    opacity: 1;
+  }
+}
+
+.status {
+  display: none;
+  background: rgba(255, 237, 239, .8);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  float: right;
+  right: 0;
+  font-size: 3em;
+  font-weight: 300;
+  font-family: 'Amsdamcyr';
+  text-align: center;
+  /*width: 100%;*/
+}
+
+.blur {
+  filter: blur(4px);
+  -webkit-animation-duration: 800ms;
+          animation-duration: 800ms;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-name: blur;
+          animation-name: blur;
+}
+
+@-webkit-keyframes blur {
+ 0% {
+  filter: blur(0px);
+ }
+
+ 50% {
+  filter: blur(2px);
+ }
+
+ 100% {
+  filter: blur(4px);
+ }
+}
+
+@keyframes blur {
+ 0% {
+  filter: blur(0px);
+ }
+
+ 50% {
+  filter: blur(2px);
+ }
+
+ 100% {
+  filter: blur(4px);
+ }
 }
