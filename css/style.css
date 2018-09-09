@@ -4409,6 +4409,20 @@ svg:active {
   /*width: 100%;*/
 }
 
+.status-circle {
+    display: none;
+    background: none;
+    height: 100%;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-left: -3.5em;
+    font-size: 3em;
+    font-weight: 300;
+    font-family: 'Amsdamcyr';
+    text-align: center;
+}
+
 .blur {
   filter: blur(4px);
   -webkit-animation-duration: 800ms;

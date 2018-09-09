@@ -18,9 +18,7 @@ export default function tarifModal() {
     });
 
     overlay.addEventListener('click', (e) => {
-        e.preventDefault();
         let target = e.target;
-        console.log("target", target);
         if (target.classList.contains('js-overlay-thank-you') || target.classList.contains('popup-close') || target.classList.contains('popup-form__btn_2')) {
             hideModal(overlay.querySelector('.js-overlay-popup'));
         }

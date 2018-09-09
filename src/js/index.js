@@ -19,9 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mainPageSlider();
     mainPageOverlay();
-    mainPageModal();
+    mainPageModal('overlay');
     mainPageSlowScroll();
     toSiteBuilder();
 		youTubeVideo();
 		tarifModal();
+		mainPageModal('js-overlay-thank-you', 'js-overlay-order');
+
+
 });

@@ -1,15 +1,27 @@
-export default function mainPageModal() {
-    let form = document.getElementsByClassName('popup-form')[0],
+export default function mainPageModal(overlayClass, thanksClass = 'popup-form') {
+    let overlay = document.querySelector(`.${overlayClass}`),
+        form = overlay.querySelector('.popup-form_form'),
         input = form.getElementsByTagName('input'),
-        regBtn = form.querySelector('.popup-form__btn');
+        regBtn = form.querySelector('.popup-form__btn-js'),
+        progressCont = document.querySelector(`.${thanksClass}`);
 
-    input[0].onkeypress = checkRu;
-    input[1].setAttribute('pattern', "\\+375 \\([0-9]{2}\\) [0-9]{3}-[0-9]{2}-[0-9]{2}");
+    for (let i = 0; i < input.length; i++) {
+        if (input[i].getAttribute('type') == 'text') {
+            input[i].onkeypress = checkRu;
+        }
 
-    input[1].addEventListener("input", mask, false);
-    input[1].addEventListener("focus", mask, false);
-    input[1].addEventListener("blur", mask, false);
-    input[1].addEventListener("keydown", mask, false);
+        if (input[i].getAttribute('type') == 'tel') {
+
+            input[i].setAttribute('pattern', "\\+375 \\([0-9]{2}\\) [0-9]{3}-[0-9]{2}-[0-9]{2}");
+            input[i].addEventListener("input", mask, false);
+            input[i].addEventListener("focus", mask, false);
+            input[i].addEventListener("blur", mask, false);
+            input[i].addEventListener("keydown", mask, false);
+        }
+    }
+
+
+
 
     //Проверка на русские символы
     function checkRu(e) {
@@ -72,25 +84,68 @@ export default function mainPageModal() {
     let message = new Object();
     message.failure = 'Что-то пошло не так... 404';
 
+
+
     function formSubmit(formName) {
 
-        close = document.querySelector('.popup-close');
 
 
+        close = overlay.querySelector('.popup-close');
 
         formName.addEventListener('submit', (e) => {
             e.preventDefault();
             let statusMessage = document.createElement('div'),
                 divCircle = document.createElement('div'),
                 divComplete = document.createElement('div');
-            statusMessage.classList.add('status', 'animated');
-            formName.parentNode.appendChild(statusMessage);
-            statusMessage.style.width = form.clientWidth + 'px';
 
-            let formData = new FormData(formName);
-            formData.append('name', input[0].value);
-            formData.append('phone', input[1].value);
-            formData.append('email', input[2].value);
+
+
+            if (thanksClass == 'popup-form') {
+                statusMessage.classList.add('status', 'animated');
+                progressCont.appendChild(statusMessage);
+                statusMessage.style.width = formName.clientWidth + 'px';
+            } else {
+                let progDiv = progressCont.querySelector('.popup');
+
+                statusMessage.classList.add('status-circle', 'animated');
+                progressCont.style.display = 'block';
+                statusMessage.style.background = 'none';
+                progDiv.style.display = 'none';
+
+                progressCont.appendChild(statusMessage);
+
+            }
+
+
+            let formData = new FormData();
+
+            for (let i = 0; i < input.length; i++) {
+                let name = input[i].getAttribute('type');
+                if (name == 'radio') {
+                    if (input[i].checked) {
+
+                        formData.append(name, input[i].getAttribute('id'));
+                    }
+
+                } else {
+
+                    if (name == 'text') {
+                        name = 'name';
+                    }
+                    formData.append(name, input[i].value);
+                }
+            }
+
+             if (thanksClass != 'popup-form') {
+                                statusMessage.style.display = 'flex';
+                            } else {
+                                statusMessage.style.display = 'block';
+                            }
+
+                            statusMessage.classList.add('fadeIn');
+                            form.classList.add('blur');
+                            statusMessage.appendChild(divCircle);
+                            divCircle.classList.add('circle-loader');
 
             function postData(data) {
                 return new Promise((resolve, reject) => {
@@ -101,12 +156,10 @@ export default function mainPageModal() {
 
                     request.onreadystatechange = () => {
 
+
+
                         if (request.readyState < 4) {
-                            statusMessage.style.display = 'block';
-                            statusMessage.classList.add('fadeIn');
-                            form.classList.add('blur');
-                            statusMessage.appendChild(divCircle);
-                            divCircle.classList.add('circle-loader');
+                            
                             console.log('loading');
                         } else if (request.readyState === 4) {
                             if (request.status == 200 && request.status < 300) {
@@ -131,6 +184,8 @@ export default function mainPageModal() {
             postData(formData)
 
                 .then(() => {
+                    let progDiv = progressCont.querySelector('.popup');
+
                     divCircle.appendChild(divComplete);
                     divCircle.classList.add('load-complete');
                     divComplete.classList.add('draw', 'checkmark');
@@ -144,20 +199,59 @@ export default function mainPageModal() {
                             statusMessage.style.display = 'none';
                             statusMessage.classList.remove('fadeOut');
                             form.classList.remove('blur');
-                            close.click();
+
+                            if (thanksClass != 'popup-form') {
+                                progDiv.style.display = '';
+                                progDiv.classList.add('animated', 'fadeIn');
+
+                                progressCont.addEventListener('click', (e) => {
+                                    if (e.target.classList.contains('js-overlay-order') || e.target.classList.contains('popup-close')) {
+                                        progressCont.classList.add('animated', 'fadeOut');
+                                    }
+                                });
+                                setTimeout(() => {
+                                    progressCont.classList.add('animated', 'fadeOut');
+
+                                    setTimeout(() => {
+                                        progressCont.style.display = '';
+                                        close.click();
+                                    }, 1000)
+                                }, 4000);
+                            } else {
+                                close.click();
+                            }
                         }, 500);
                     }, 2000);
                 })
                 .catch(() => {
+                    if (thanksClass != 'popup-form') {
+                        statusMessage.style.width = '100%';
+                        statusMessage.style.left = '0';
+                        statusMessage.style.marginLeft = '0';
+                    }
                     statusMessage.style.display = 'block';
+
                     statusMessage.classList.add('fadeIn');
-                    // statusMessage.cssText = '';
+                    statusMessage.cssText = '';
                     statusMessage.innerHTML = message.failure;
                     setTimeout(() => {
                         statusMessage.classList.add('fadeOut');
-                        statusMessage.style.display = 'none';
-                        statusMessage.classList.remove('fadeOut');
-                        form.classList.remove('blur');
+                        progressCont.classList.add('fadeOut');
+
+                        setTimeout(() => {
+                            statusMessage.style.display = 'none';
+                            statusMessage.classList.remove('fadeOut');
+                            form.classList.remove('blur');
+
+                            if (thanksClass != 'popup-form') {
+                                statusMessage.classList.remove('status-circle');
+                                statusMessage.style.cssText = '';
+                                progressCont.style.display = '';
+                            }
+                        }, 1000)
+
+
+
                     }, 2000);
 
                 })
