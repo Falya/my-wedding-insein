@@ -3,6 +3,7 @@ import mainPageOverlay from './mainPageOverlay.js';
 import mainPageModal from './mainPageModal.js';
 import mainPageSlowScroll from './mainPageSlowScroll.js';
 import toSiteBuilder from './toSiteBuilder.js';
+import youTubeVideo from './youTubeVideo.js';
 
 
 
@@ -20,5 +21,5 @@ document.addEventListener("DOMContentLoaded", () => {
     mainPageModal();
     mainPageSlowScroll();
     toSiteBuilder();
-
+		youTubeVideo();
 });
