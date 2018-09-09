@@ -4,6 +4,7 @@ import mainPageModal from './mainPageModal.js';
 import mainPageSlowScroll from './mainPageSlowScroll.js';
 import toSiteBuilder from './toSiteBuilder.js';
 import youTubeVideo from './youTubeVideo.js';
+import tarifModal from './tarifModal.js';
 
 
 
@@ -22,4 +23,5 @@ document.addEventListener("DOMContentLoaded", () => {
     mainPageSlowScroll();
     toSiteBuilder();
 		youTubeVideo();
+		tarifModal();
 });
