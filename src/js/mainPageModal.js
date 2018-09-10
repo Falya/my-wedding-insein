@@ -1,9 +1,11 @@
 export default function mainPageModal(overlayClass, thanksClass = 'popup-form') {
     let overlay = document.querySelector(`.${overlayClass}`),
-        form = overlay.querySelector('.popup-form_form'),
+        form = overlayClass == 'contacts' ? overlay.querySelector('.form-group') : overlay.querySelector('.popup-form_form'),
         input = form.getElementsByTagName('input'),
-        regBtn = form.querySelector('.popup-form__btn-js'),
         progressCont = document.querySelector(`.${thanksClass}`);
+
+
+
 
     for (let i = 0; i < input.length; i++) {
         if (input[i].getAttribute('type') == 'text') {
@@ -19,9 +21,6 @@ export default function mainPageModal(overlayClass, thanksClass = 'popup-form') 
             input[i].addEventListener("keydown", mask, false);
         }
     }
-
-
-
 
     //Проверка на русские символы
     function checkRu(e) {
@@ -88,8 +87,6 @@ export default function mainPageModal(overlayClass, thanksClass = 'popup-form') 
 
     function formSubmit(formName) {
 
-
-
         close = overlay.querySelector('.popup-close');
 
         formName.addEventListener('submit', (e) => {
@@ -116,7 +113,6 @@ export default function mainPageModal(overlayClass, thanksClass = 'popup-form') 
 
             }
 
-
             let formData = new FormData();
 
             for (let i = 0; i < input.length; i++) {
@@ -136,16 +132,20 @@ export default function mainPageModal(overlayClass, thanksClass = 'popup-form') 
                 }
             }
 
-             if (thanksClass != 'popup-form') {
-                                statusMessage.style.display = 'flex';
-                            } else {
-                                statusMessage.style.display = 'block';
-                            }
+            if(form.querySelector('textarea')){
+                formData.append('message', form.querySelector('textarea').value);
+            }
 
-                            statusMessage.classList.add('fadeIn');
-                            form.classList.add('blur');
-                            statusMessage.appendChild(divCircle);
-                            divCircle.classList.add('circle-loader');
+            if (thanksClass != 'popup-form') {
+                statusMessage.style.display = 'flex';
+            } else {
+                statusMessage.style.display = 'block';
+            }
+
+            statusMessage.classList.add('fadeIn');
+            form.classList.add('blur');
+            statusMessage.appendChild(divCircle);
+            divCircle.classList.add('circle-loader');
 
             function postData(data) {
                 return new Promise((resolve, reject) => {
@@ -153,13 +153,10 @@ export default function mainPageModal(overlayClass, thanksClass = 'popup-form') 
                     request.open('POST', '../../server.php')
                     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-
                     request.onreadystatechange = () => {
 
-
-
                         if (request.readyState < 4) {
-                            
+
                             console.log('loading');
                         } else if (request.readyState === 4) {
                             if (request.status == 200 && request.status < 300) {
@@ -179,6 +176,10 @@ export default function mainPageModal(overlayClass, thanksClass = 'popup-form') 
                 for (let i = 0; i < input.length; i++) {
                     input[i].value = '';
                 }
+
+                if(form.querySelector('textarea')){
+                form.querySelector('textarea').value = '';
+            }
             }
 
             postData(formData)

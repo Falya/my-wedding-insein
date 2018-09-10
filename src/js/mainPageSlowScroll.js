@@ -1,5 +1,34 @@
 export default function mainPageSlowScroll() {
-	let menuLink = document.querySelector('header');
+	let menuLink = document.querySelector('header'),
+        button = document.createElement('div'),
+        header = document.querySelector('header');
+        document.body.appendChild(button);
+
+    button.classList.add('to-top-btn', 'fa', 'fa-angle-double-up', 'animated');
+    button.setAttribute('title', 'Вверх');
+
+    function buttonPosition () {
+        if (header.getBoundingClientRect().bottom <= 0) {
+            button.style.display = 'block';
+            button.classList.remove('fadeOutRight');
+            button.classList.add('fadeInRight');
+
+        } else {
+            button.classList.remove('fadeInRight');
+            button.classList.add('fadeOutRight');
+        }
+    }
+
+    window.addEventListener('scroll', () => {
+        buttonPosition();   
+    });
+
+    button.addEventListener('click', () => {
+        let pos = document.documentElement.scrollTop,
+            targ = header.getBoundingClientRect().top;
+        scrollingAll(draw, pos, targ, 1000);
+    });
+
 
 	menuLink.addEventListener('click', (e)=> {
 		e.preventDefault();
@@ -18,7 +47,6 @@ export default function mainPageSlowScroll() {
                     pos = document.documentElement.scrollTop;
                 scrollingAll(draw, pos, targ, 1200);
             }
-			console.log("target", linkedDiv);
 
 			// scrolling(function(timePassed) {
    //                  window.scrollBy(0, linkedDiv.getBoundingClientRect().top / 30 +5);

@@ -1,10 +1,15 @@
 //basic vars
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const variables = require('variable.js');
 
 
 //additional plugins
 const Uglify = require('uglifyjs-webpack-plugin');
+
+// const useDevServer = true;
+// const publicPath = useDevServer ? 'http://localhost:8081/dist/' : 'dist/';
 
 
 //module settings
@@ -30,6 +35,19 @@ let conf = {
 		overlay: true,
 	},
 
+	plugins: [
+    new HtmlWebpackPlugin({
+      template: '../tamplate/index.html',
+      title: 'HTML Webpack Plugin',
+      filename: '../index.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: '../tamplate/builder-footer.php',
+      title: 'HTML Webpack Plugin',
+      filename: '../builder-footer.php'
+    })
+  ],
+
 	module: {
 		rules: [
 			{
@@ -44,6 +62,11 @@ let conf = {
 
 module.exports = (env, options) => {
 	let production = options.mode === 'production';
+
+
+	conf.output.publicPath = production
+														? 'dist/'
+														: 'http://localhost:8080/dist/';
 
 	conf.devtool = production
 									? 'source-map'
