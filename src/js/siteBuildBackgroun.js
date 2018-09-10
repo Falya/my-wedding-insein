@@ -4,7 +4,6 @@ export default function siteBuildBackgroun() {
 
 	for (let i = 0; i < imgBlock.length; i++) {
 		imgBlock[i].addEventListener('click', function (e) {
-			console.log(this.clientWidth);
 			showModal(this.getAttribute('src'), this.offsetWidth, this.offsetHeight);
 
 		});
@@ -43,7 +42,6 @@ let overlay = document.createElement('div'),
 			window.addEventListener('click', (e)=>{
 				let target = e.target,
 					id = target.getAttribute('id');
-				console.log("target", target);
 
 				if (id == 'overlay' || target.tagName == 'I') {
 					overlay.classList.toggle('fadeIn');

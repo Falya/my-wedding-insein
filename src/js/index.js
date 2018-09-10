@@ -6,6 +6,7 @@ import toSiteBuilder from './toSiteBuilder.js';
 import youTubeVideo from './youTubeVideo.js';
 import tarifModal from './tarifModal.js';
 import siteBuildBackgroun from './siteBuildBackgroun.js';
+import activeTab from './activeTab.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -33,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else {
     	siteBuildBackgroun();
+    	activeTab();
     }
 
 

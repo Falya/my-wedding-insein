@@ -45,6 +45,11 @@ let conf = {
       template: '../tamplate/builder-footer.php',
       title: 'HTML Webpack Plugin',
       filename: '../builder-footer.php'
+    }),
+    new HtmlWebpackPlugin({
+      template: '../tamplate/location.html',
+      title: 'HTML Webpack Plugin',
+      filename: '../location.html'
     })
   ],
 
