@@ -7,6 +7,7 @@ import youTubeVideo from './youTubeVideo.js';
 import tarifModal from './tarifModal.js';
 import siteBuildBackgroun from './siteBuildBackgroun.js';
 import activeTab from './activeTab.js';
+import invitationRed from './invitationRed.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
     	siteBuildBackgroun();
     	activeTab();
+        invitationRed();
     }
 
 

@@ -4531,3 +4531,44 @@ svg:active {
     margin-left: 20%;
     color: #0000003b;
 }
+
+body section  .container .no-gutters .inv-modal {
+  position: absolute;
+  display: none;
+    left: 50%;
+    margin-left: -420px;
+    z-index: 200;
+}
+
+.inv-modal .popup-close {
+    top: 3%;
+    right: 3%;
+    position: absolute;
+    font-size: 3em;
+    cursor: pointer;
+}
+.inv-modal .popup-close:hover {
+    font-size: 3.5em;
+}
+
+.inv-overlay {
+  position: absolute;
+  display: none;
+  height: 100%;
+  width: 100%;
+  background: #000000b0;
+  top: 0;
+  left: 0;
+}
+
+.invitation-block__title input, .invitation-block__subtitle input, 
+.invitation-block__adress input, .invitation-block__pretitle textarea {
+  text-align: center;
+    width: 100%;
+    border: none;
+    font-family: 'Museo';
+        margin-top: 0;
+resize: none;
+overflow: hidden;
+padding: 0;
+}

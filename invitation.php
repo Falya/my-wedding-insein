@@ -51,6 +51,33 @@
               </div>
               <!-- /.invitation-block -->
             </div>
+
+            <div class="inv-modal col-12 col-md-auto justify-content-center">
+              <div class="invitation-block">
+                <div class="invitation-block__item">
+                  <div class="invitation-block__pretitle">
+      
+                   <textarea class="invitation-block__pretitle">
+                     
+                   </textarea> 
+                  </div>
+                  <div class="invitation-block__title">
+                    <input class="invitation-block__title" type="text">
+                  </div>
+                  <div class="invitation-block__subtitle">
+                   
+                    <input class="invitation-block__subtitle" type="text">
+                  </div>
+                  <div class="invitation-block__adress">
+                    
+                    <input class="invitation-block__adress" type="text">
+                  </div>  
+                </div>
+                <!-- /.invitation-block__item -->
+              </div>
+              <!-- /.invitation-block -->
+              <div class="popup-close">&times;</div>
+            </div>
             <!-- /.col-4 -->
             <div class="col d-flex flex-column">
               <div class="invitation-img-box-2">
@@ -64,6 +91,7 @@
             </div>
             <!-- /.col-2 -->            
           </div>
+          <div class='inv-overlay'></div>
           <!-- /.row -->
       <?php include 'button.php'; ?>    
       </section>
