@@ -8,6 +8,8 @@ import tarifModal from './tarifModal.js';
 import siteBuildBackgroun from './siteBuildBackgroun.js';
 import activeTab from './activeTab.js';
 import invitationRed from './invitationRed.js';
+import guestList from "./guestList.js";
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -35,9 +37,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else {
         if (page.match(/site-builder.php/)) {
+
             siteBuildBackgroun();
+
         } else if (page.match(/invitation.php/)) {
+
             invitationRed();
+
+        } else if (page.match(/guest-list.php/)) {
+            guestList();
         }
     	
     	activeTab();
