@@ -34,9 +34,14 @@ document.addEventListener("DOMContentLoaded", () => {
         mainPageModal('contacts', 'js-overlay-order');
 
     } else {
-    	siteBuildBackgroun();
+        if (page.match(/site-builder.php/)) {
+            siteBuildBackgroun();
+        } else if (page.match(/invitation.php/)) {
+            invitationRed();
+        }
+    	
     	activeTab();
-        invitationRed();
+        
     }
 
 
