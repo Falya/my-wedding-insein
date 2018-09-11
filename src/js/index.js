@@ -9,12 +9,15 @@ import siteBuildBackgroun from './siteBuildBackgroun.js';
 import activeTab from './activeTab.js';
 import invitationRed from './invitationRed.js';
 import guestList from "./guestList.js";
+import initMap from "./initMap.js";
+
+import maps from "./maps.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
-
     let loader = document.querySelector('.loader-div'),
         page = location.pathname.trim();
+
 
     loader.classList.add('animated', 'fadeOut');
     if (loader.style.opacity == 0) {
@@ -46,6 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } else if (page.match(/guest-list.php/)) {
             guestList();
+
+        } else if (page.match(/location.(html|php)/)) {
+           maps();
         }
     	
     	activeTab();
