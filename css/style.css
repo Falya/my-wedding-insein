@@ -3582,6 +3582,26 @@ svg:active {
   }
 }
 
+.book-block__fromH {
+  text-align: right;
+    margin: 3em;
+}
+
+@media (max-width: 74.99em) {
+  .book-block__fromH {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 35.99em) {
+  .book-block__fromH {
+    font-size: 14px;
+    padding: 0 8px;
+    margin: 2em;
+  }
+}
+
 .book-ellips {
   width: 1003px;
   height: 35px;
