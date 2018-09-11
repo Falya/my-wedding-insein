@@ -13,7 +13,8 @@
           <!-- /.section-subtitle -->
           <div class="row justify-content-center">
             <div class="location-button">
-              <button class="location-button__map book1 book-active-tab" id="tab1">Поздравления</button><button class="location-button__map book2" id="tab2">Пожелания</button>
+              <button class="location-button__map book1 book-active-tab" id="tab1">Поздравления</button>
+              <button class="location-button__map book2" id="tab2">Пожелания</button>
             </div>
             <!-- /.location-button -->
           </div>
@@ -21,19 +22,28 @@
           <div class="row justify-content-center">
             <div class="book-block">
               <div class="slider-book">
-                <div class="a-slide-book slide-book-1"></div>
-                <div class="a-slide-book slide-book-2"></div>
-                <div class="a-slide-book slide-book-3"></div>
-                <div class="a-slide-book slide-book-4"></div>
-                <div class="a-slide-book slide-book-5"></div>
-                <div class="a-slide-book slide-book-6"></div>
-                <div class="a-slide-book slide-book-7"></div>
-                <div class="a-slide-book slide-book-8"></div>
-                <div class="a-slide-book slide-book-9"></div>
-                <div class="a-slide-book slide-book-10"></div>
-                <div class="a-slide-book slide-book-11"></div>
-                <div class="a-slide-book slide-book-12"></div>
-                <div class="a-slide-book slide-book-13"></div>
+                <button class="slider-book-arrow slider-book-arrow-right"></button>
+                <button class="slider-book-arrow slider-book-arrow-left"></button>
+                <div class="slick-list">
+                  <div class="slick-track">
+                    <div class="a-slide-book slide-book-1"></div>
+                    <div class="a-slide-book slide-book-2"></div>
+                    <div class="a-slide-book slide-book-3"></div>
+                    <div class="a-slide-book slide-book-4"></div>
+                    <div class="a-slide-book slide-book-5"></div>
+                    <div class="a-slide-book slide-book-6"></div>
+                    <div class="a-slide-book slide-book-7"></div>
+                    <div class="a-slide-book slide-book-8"></div>
+                    <div class="a-slide-book slide-book-9"></div>
+                    <div class="a-slide-book slide-book-10"></div>
+                    <div class="a-slide-book slide-book-11"></div>
+                    <div class="a-slide-book slide-book-12"></div>
+                    <div class="a-slide-book slide-book-13"></div>
+                  </div>
+                </div>
+                <ul class="slick-dots">
+                  
+                </ul>
               </div>  
               <div class="book-block__item book-block__item-1" id="first">
                 <div class="book-block__pretitle d-flex justify-content-center align-items-center">

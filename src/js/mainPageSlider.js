@@ -1,9 +1,31 @@
-export default function mainPageSlider() {
-	let slider = document.getElementsByClassName('slider')[0],
-			slides = slider.getElementsByClassName('a-slide'),
+export default function mainPageSlider(sliderClass, slidesClass, arrowClass = null) {
+	let slider = document.getElementsByClassName(sliderClass)[0],
+			slides = slider.getElementsByClassName(slidesClass),
 			sliderDots = document.querySelector('.slick-dots'),
-			dot = sliderDots.getElementsByTagName('li'),
 			slideIndex = 1;
+
+
+
+for (let i = 0; i < slides.length; i++) {
+	let dots = document.createElement('li');
+	sliderDots.appendChild(dots);
+}
+
+let dot = sliderDots.getElementsByTagName('li');
+
+if (arrowClass != null) {
+	let arrows = slider.getElementsByClassName(arrowClass);
+
+	arrows[0].addEventListener('click', () => {
+		plusSlide(1)
+	});
+
+	arrows[1].addEventListener('click', () => {
+			minusSlide(1);
+	});
+}
+
+
 
 showSlides(slideIndex);
 
@@ -32,6 +54,10 @@ showSlides(slideIndex);
 
 	function plusSlide (n) {
 		showSlides(slideIndex +=n); 
+	}
+
+	function minusSlide (n) {
+		showSlides(slideIndex -=n);
 	}
 
 	function currentSlide (n) {

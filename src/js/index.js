@@ -9,9 +9,8 @@ import siteBuildBackgroun from './siteBuildBackgroun.js';
 import activeTab from './activeTab.js';
 import invitationRed from './invitationRed.js';
 import guestList from "./guestList.js";
-import initMap from "./initMap.js";
-
 import maps from "./maps.js";
+import whishBook from "./whishBook.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,9 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (page == '/' || page == 'index.html') {
+    if (page == '/' || page.match(/index.html/)) {
 
-        mainPageSlider();
+        mainPageSlider('slider', 'a-slide');
         mainPageOverlay();
         mainPageModal('overlay');
         mainPageSlowScroll();
@@ -52,6 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } else if (page.match(/location.(html|php)/)) {
            maps();
+        } else if (page.match(/book-wishes.php/)) {
+            mainPageSlider('slider-book', 'a-slide-book', 'slider-book-arrow');
+            whishBook();
         }
     	
     	activeTab();
