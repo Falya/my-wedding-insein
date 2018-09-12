@@ -14,6 +14,7 @@ import whishBook from "./whishBook.js";
 import guestLetter from "./guestLetter.js";
 import guestsPhoto from "./guestsPhoto.js";
 import videoWidget from "./videoWidget.js";
+import mobileMenu from "./mobileMenu.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (page == '/' || page.match(/index.html/)) {
-
+        mobileMenu('header-nav__link', 'header-nav-menu');
         mainPageSlider('slider', 'a-slide');
         mainPageOverlay();
         mainPageModal('overlay');
@@ -39,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tarifModal();
         mainPageModal('js-overlay-thank-you', 'js-overlay-order');
         mainPageModal('contacts', 'js-overlay-order');
+
 
     } else {
         if (page.match(/site-builder.php/)) {
@@ -66,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     	
     	activeTab();
+        mobileMenu('header-main__link', 'header-main-menu');
         
     }
 

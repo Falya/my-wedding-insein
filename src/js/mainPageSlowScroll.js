@@ -34,7 +34,7 @@ export default function mainPageSlowScroll() {
 		e.preventDefault();
 		let target = e.target,
 				browser = navigator.userAgent;
-		if (target.hasAttribute('href')) {
+		if (target.hasAttribute('href') && target.getAttribute('id') != 'touch-menu') {
 
 			let linkedDiv = document.getElementById(target.getAttribute('href').slice(1));
 
