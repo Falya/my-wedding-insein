@@ -920,7 +920,15 @@ iframe {
 
   z-index: 1;
 }
-.youtube iframe
+
+.builder8 .youtube::before {
+  height: 91%;
+  background-size: cover;
+}
+
+.builder8 .youtube {
+  background-size: cover;
+}
 
 .products {
   padding-top: 70px;

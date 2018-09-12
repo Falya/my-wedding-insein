@@ -15,7 +15,9 @@
             <div class="col"></div>
             <!-- /.col -->
             <div class="col-md-auto d-flex justify-content-center">
-              <div class="youtube" id="q_th_D4VHC0" style="width:655px; height:403px;"></div>
+              <div class="youtube" id="q_th_D4VHC0" style="width:655px; height:403px;">
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+              </div>
             </div>
             <!-- /.col-auto -->
             <div class="col"></div>

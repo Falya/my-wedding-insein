@@ -13,6 +13,7 @@ import maps from "./maps.js";
 import whishBook from "./whishBook.js";
 import guestLetter from "./guestLetter.js";
 import guestsPhoto from "./guestsPhoto.js";
+import videoWidget from "./videoWidget.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -60,6 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
             guestLetter();
         } else if (page.match(/photo-guests.php/)) {
             guestsPhoto();
+        } else if (page.match(/video-widget.php/)) {
+            videoWidget();
         }
     	
     	activeTab();
