@@ -11,6 +11,7 @@ import invitationRed from './invitationRed.js';
 import guestList from "./guestList.js";
 import maps from "./maps.js";
 import whishBook from "./whishBook.js";
+import guestLetter from "./guestLetter.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -54,6 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (page.match(/book-wishes.php/)) {
             mainPageSlider('slider-book', 'a-slide-book', 'slider-book-arrow');
             whishBook();
+        } else if (page.match(/letter-guests.php/)) {
+            guestLetter();
         }
     	
     	activeTab();

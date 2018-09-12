@@ -4151,6 +4151,22 @@ svg:active {
   margin-bottom: 20px;
 }
 
+.stat9 {
+  display: none;
+    background: rgba(255, 237, 239, .8);
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    font-size: 3em;
+    font-weight: 300;
+    font-family: 'Amsdamcyr';
+    text-align: center;
+}
+  
+  .stat9 .circle-loader {
+    margin-top: 0.5em;
+  }
+
 .footer-main {
   position: relative;
   padding-top: 68px;
