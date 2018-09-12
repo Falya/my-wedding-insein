@@ -14,7 +14,9 @@
           <!-- /.section-subtitle -->
           <div class="row justify-content-center">
             <div class="image-box-guest">
-              <div class="image-box-1">
+              <div class="slick-slider">
+                <div class="slick-slide">
+                  <div class="image-box-1">
                 <img src="img/section7/slider.jpeg" alt>
               </div>
               <div class="image-box-2">
@@ -24,7 +26,9 @@
               <div class="image-box-3">
                 <img src="img/section7/slider3.jpeg" alt>
               </div>
-              <div class="image-box-1">
+                </div>
+              <div class="slick-slide">
+                <div class="image-box-1">
                 <img src="img/section7/slider.jpeg" alt>
               </div>
               <div class="image-box-2">
@@ -33,6 +37,8 @@
               </div>
               <div class="image-box-3">
                 <img src="img/section7/slider3.jpeg" alt>
+              </div>
+              </div>
               </div>  
             </div>
             <!-- /.slider-album -->

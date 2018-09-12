@@ -12,6 +12,7 @@ import guestList from "./guestList.js";
 import maps from "./maps.js";
 import whishBook from "./whishBook.js";
 import guestLetter from "./guestLetter.js";
+import guestsPhoto from "./guestsPhoto.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -57,6 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
             whishBook();
         } else if (page.match(/letter-guests.php/)) {
             guestLetter();
+        } else if (page.match(/photo-guests.php/)) {
+            guestsPhoto();
         }
     	
     	activeTab();

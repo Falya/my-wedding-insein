@@ -3885,6 +3885,10 @@ svg:active {
   padding-top: 62px;
 }
 
+.builder7 .slick-active {
+  display: flex;
+}
+
 @media (max-width: 61.99em) {
   .builder7 {
     padding-top: 35px;
@@ -3962,6 +3966,10 @@ svg:active {
     max-width: 290px;
     height: 190px;
   }
+}
+.div-arrow {
+      display: block;
+    position: absolute;
 }
 
 .slider-albumguest-arrow {
