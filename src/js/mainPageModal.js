@@ -87,7 +87,7 @@ export default function mainPageModal(overlayClass, thanksClass = 'popup-form') 
 
     function formSubmit(formName) {
 
-        close = overlay.querySelector('.popup-close');
+        let close = overlay.querySelector('.popup-close');
 
         formName.addEventListener('submit', (e) => {
             e.preventDefault();
