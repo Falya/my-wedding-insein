@@ -219,7 +219,7 @@ export default function mainPageModal(overlayClass, thanksClass = 'popup-form') 
                                     }, 1000)
                                 }, 4000);
                             } else {
-                                close.click();
+                                
                             }
                         }, 500);
                     }, 2000);

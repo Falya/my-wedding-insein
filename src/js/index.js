@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import mainPageSlider from './mainPageSlider.js';
 import mainPageOverlay from './mainPageOverlay.js';
 import mainPageModal from './mainPageModal.js';

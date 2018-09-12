@@ -19,7 +19,7 @@ let conf = {
 
 	//Точки входа js
 	entry: {
-		app: [
+		app: [ 'babel-polyfill',
 			'./js/index.js'
 		],
 	},
