@@ -59,6 +59,16 @@ console.log("section", section);
 		}
 	});
 
+	window.addEventListener('resize', () => {
+
+
+let widthB = document.documentElement.clientWidth;
+if (menu.classList.contains('header-main__link_active') && widthB > 768) {
+				navMenu.classList.toggle('header-main-menu_active');
+						menu.classList.toggle('header-main__link_active');
+		}
+	});
+
 
 }
 
